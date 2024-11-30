@@ -6,7 +6,7 @@ First, setup the environment with poetry:
 
 > **_Note:_** This step is not needed if you are using the dev-container.
 
-```
+```shell
 poetry install
 poetry shell
 ```
@@ -17,13 +17,13 @@ If you are using any tools or data sources, you can update their config files in
 
 Second, generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
 
-```
+```shell
 poetry run generate
 ```
 
 Third, run the development server:
 
-```
+```shell
 python main.py
 ```
 
@@ -34,7 +34,7 @@ The example provides two different API endpoints:
 
 You can test the streaming endpoint with the following curl request:
 
-```
+```shell
 curl --location 'localhost:8000/api/chat' \
 --header 'Content-Type: application/json' \
 --data '{ "messages": [{ "role": "user", "content": "Hello" }] }'
@@ -42,7 +42,7 @@ curl --location 'localhost:8000/api/chat' \
 
 And for the non-streaming endpoint run:
 
-```
+```shell
 curl --location 'localhost:8000/api/chat/request' \
 --header 'Content-Type: application/json' \
 --data '{ "messages": [{ "role": "user", "content": "Hello" }] }'
@@ -54,7 +54,7 @@ Open [http://localhost:8000/docs](http://localhost:8000/docs) with your browser 
 
 The API allows CORS for all origins to simplify development. You can change this behavior by setting the `ENVIRONMENT` environment variable to `prod`:
 
-```
+```shell
 ENVIRONMENT=prod python main.py
 ```
 
@@ -62,7 +62,7 @@ ENVIRONMENT=prod python main.py
 
 1. Build an image for the FastAPI app:
 
-```
+```shell
 docker build -t <your_backend_image_name> .
 ```
 
@@ -70,7 +70,7 @@ docker build -t <your_backend_image_name> .
 
 Parse the data and generate the vector embeddings if the `./data` folder exists - otherwise, skip this step:
 
-```
+```shell
 docker run \
   --rm \
   -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
@@ -83,7 +83,7 @@ docker run \
 
 3. Start the API:
 
-```
+```shell
 docker run \
   -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
   -v $(pwd)/config:/app/config \

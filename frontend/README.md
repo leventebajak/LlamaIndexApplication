@@ -4,19 +4,19 @@ This is a [LlamaIndex](https://www.llamaindex.ai/) project using [Next.js](https
 
 First, install the dependencies:
 
-```
+```shell
 npm install
 ```
 
 Second, generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
 
-```
+```shell
 npm run generate
 ```
 
 Third, run the development server:
 
-```
+```shell
 npm run dev
 ```
 
@@ -30,7 +30,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 1. Build an image for the Next.js app:
 
-```
+```shell
 docker build -t <your_app_image_name> .
 ```
 
@@ -38,7 +38,7 @@ docker build -t <your_app_image_name> .
 
 Parse the data and generate the vector embeddings if the `./data` folder exists - otherwise, skip this step:
 
-```
+```shell
 docker run \
   --rm \
   -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
@@ -51,7 +51,7 @@ docker run \
 
 3. Start the app:
 
-```
+```shell
 docker run \
   --rm \
   -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
