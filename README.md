@@ -7,7 +7,8 @@ First, startup the backend as described in the [backend README](./backend/README
 Run the development server:
 
 ```shell
-python backend/main.py
+cd backend
+python main.py
 ```
 
 Second, run the development server of the frontend as described in the [frontend README](./frontend/README.md).
