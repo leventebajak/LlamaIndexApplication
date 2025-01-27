@@ -227,8 +227,13 @@ def init_gemini():
 
 
 def init_mistral():
-    from llama_index.embeddings.mistralai import MistralAIEmbedding
-    from llama_index.llms.mistralai import MistralAI
+    try:
+        from llama_index.embeddings.mistralai import MistralAIEmbedding
+        from llama_index.llms.mistralai import MistralAI
+    except ImportError:
+        raise ImportError(
+            "MistralAI support is not installed. Please install it."
+        )
 
     Settings.llm = MistralAI(model=os.getenv("MODEL"))
     Settings.embed_model = MistralAIEmbedding(model_name=os.getenv("EMBEDDING_MODEL"))
